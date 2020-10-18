@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.springclooud.example</groupId>
+    <groupId>org.springcloud.example</groupId>
     <artifactId>springcloud-example-xp</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -26,6 +26,8 @@
         <mybatis.spring.boot.verison>1.3.0</mybatis.spring.boot.verison>
     </properties>
 
+
+       <!--子模块继承之后，提供作用：锁定版本，子模版不用写版本号和groudId-->
     <dependencyManagement>
         <dependencies>
             <!--spring boot 2.2.2-->
@@ -96,10 +98,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                    <addResources>true</addResources>
-                </configuration>
+                <version>2.1.0.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
