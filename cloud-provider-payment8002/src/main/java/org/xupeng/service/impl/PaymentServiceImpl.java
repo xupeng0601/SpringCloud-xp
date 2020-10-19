@@ -1,9 +1,10 @@
 package org.xupeng.service.impl;
 
-import org.springframework.stereotype.Service;
 import org.xupeng.dao.IPaymentDao;
+import org.springframework.stereotype.Service;
 import org.xupeng.entities.PaymentEntity;
 import org.xupeng.service.IPaymentService;
+
 
 import javax.annotation.Resource;
 
@@ -13,7 +14,7 @@ import javax.annotation.Resource;
  * @Description
  */
 @Service
-public class PaymentServiceImpl implements IPaymentService  {
+public class PaymentServiceImpl implements IPaymentService {
 
 
     @Resource
