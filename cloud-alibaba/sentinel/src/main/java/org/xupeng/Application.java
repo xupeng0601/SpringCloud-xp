@@ -2,9 +2,16 @@ package org.xupeng;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.csp.sentinel.slots.block.RuleConstant;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author xupeng
@@ -15,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Application {
 
+
+    private static final String KEY = "querySentinel";
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -27,13 +36,33 @@ public class Application {
     }
 
 
+
+    /**
+     * 初始化限流配置
+     */
+    @PostConstruct
+    public void initFlowQpsRule() {
+        List<FlowRule> rules = new ArrayList<FlowRule>();
+        FlowRule rule = new FlowRule();
+        rule.setResource(KEY);
+        // QPS控制在2以内
+        rule.setCount(2);
+        // QPS限流
+        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        rule.setLimitApp("default");
+        rules.add(rule);
+        FlowRuleManager.loadRules(rules);
+    }
+
+
+
     /**
      *  模拟使用Sentinel注解实现限流
      *
      * @param id
      * @return
      */
-    @SentinelResource(value = "query", blockHandler = "handleFlowQpsException",
+    @SentinelResource(value = "querySentinel", blockHandler = "handleFlowQpsException",
             fallback = "queryFallback")
     @GetMapping("/query")
     public String query(String id) {
