@@ -1,0 +1,34 @@
+#规划GateWay的服务端口
+server:
+  port: 9010
+##规划gateWay注册到到nacos上的服务应用名称
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        #gateway工程注册到nacos上的地址
+        server-addr: 120.77.255.131:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 启用自动根据服务ID生成路由
+          lower-case-service-id: true # 设置路由的路径为小写的服务ID
+      routes:
+        - id: youlai-auth
+          uri: lb://youlai-auth
+          predicates:
+            - Path=/youlai-auth/**
+          filters:
+            - StripPrefix=1 # 移除前缀 youlai-auth
+        - id: youlai-admin
+          uri: lb://youlai-admin
+          predicates:
+            - Path=/youlai-admin/**
+          filters:
+            - StripPrefix=1
+  profiles:
+    active: xxxxx  # 具体的gateway配置
+
+
