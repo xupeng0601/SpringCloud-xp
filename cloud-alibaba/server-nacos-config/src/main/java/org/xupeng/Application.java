@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableDiscoveryClient
 @RestController
 @RefreshScope
-public class NacosConfigApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(NacosConfigApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Value("${Nacos.config}")

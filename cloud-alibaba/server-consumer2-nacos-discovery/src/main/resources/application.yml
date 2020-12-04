@@ -1,0 +1,33 @@
+
+server:
+  port: 9002
+
+spring:
+  application:
+    name: server-consumer-nacos-discovery  #服务名称
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://120.77.255.131:3306/nacos-practice?characterEncoding=utf-8&useSSl=false&serverTimeZone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 120.77.255.131:8848  #注册中心地址
+
+
+#hystrix的超时时间
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

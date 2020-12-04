@@ -1,6 +1,6 @@
 
 server:
-  port: 9010
+  port: 9001
 
 spring:
   application:
@@ -13,18 +13,3 @@ spring:
 
 
 
-
-#hystrix的超时时间
-hystrix:
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: true
-        isolation:
-          thread:
-            timeoutInMilliseconds: 30000
-#ribbon的超时时间
-ribbon:
-  ReadTimeout: 30000
-  ConnectTimeout: 30000
