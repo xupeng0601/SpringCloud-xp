@@ -91,7 +91,7 @@ public class Application {
      * 注意: 方法参数、返回值要与原函数保持一致
      * @return
      */
-    public String queryOrderInfo2Fallback(String id, Throwable e) {
+    public String queryFallback(String id, Throwable e) {
         return "fallback query 接口异常的应急处理: " + id;
     }
 }

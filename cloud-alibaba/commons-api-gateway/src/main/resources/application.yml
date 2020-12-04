@@ -21,6 +21,9 @@ spring:
           uri: lb://server-consumer-nacos-discovery  #lb= loadblance 表示负载均衡  后面接的注册中心的服务名
           predicates:
             - Path=/order/payment/**
+            #如果开启了动态路由，规则就会失效
+            #- After=2020-12-04T12:44:12.206+08:00[Asia/Shanghai]
+#            - Cookie=username,zzyy
 #          filters:
 #            - StripPrefix=1 # 移除前缀 youlai-auth
 #        - id: youlai-admin
