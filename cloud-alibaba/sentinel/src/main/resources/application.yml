@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: sentinel-demo
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 120.77.255.131:8848  #Nacos注册中心地址
+    sentinel:
+      transport:
+        dashboard: localhost:8080    #sentinel控制台地址
+        port: 8719
+      datasource:
+        ds1:
+          nacos:    #规则配置策略
+            server-addr: 120.77.255.131:8848    #nacos的访问地址
+            dataId: sentinel-demo  #获取限流的数据源的dataId
+            groupId: DEFAULT_GROUP
+            data-type: json   #限流类型
+            rule-type: flow   #规则类型
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+feign:
+  sentinel:
+    enabled: true # 激活Sentinel对Feign的支持
+
+server:
+  port: 9100
