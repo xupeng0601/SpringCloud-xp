@@ -29,7 +29,7 @@ spring:
 #        - id: youlai-admin
 #          uri: lb://youlai-admin
 #          predicates:
-#            - Path=/youlai-admin/**
+#            - Path=/youminlai-ad/**
 #          filters:
 #            - StripPrefix=1
 #  profiles:
