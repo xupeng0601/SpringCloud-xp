@@ -1,5 +1,8 @@
 package org.xupeng.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +22,7 @@ import javax.websocket.server.PathParam;
 @RestController
 @Slf4j
 @RequestMapping("/payment")
+@DefaultProperties(defaultFallback = "globalFallback")
 public class PaymentController {
 
     @Autowired
@@ -48,8 +52,21 @@ public class PaymentController {
     }
 
     @GetMapping("/sendMess")
-    public String sendMess(@RequestParam("msg") String msg){
+    @HystrixCommand(fallbackMethod = "fallback",
+            commandProperties = {
+                  @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")})
+    public String sendMess(@RequestParam("msg") String msg) throws InterruptedException {
+//        double b = 5/0;
+        Thread.sleep(5000);
         return "远程调用成功，message=" +msg;
+    }
+
+    public String fallback(String msg){
+        return "fallback，应急处理: port :" + serverPort;
+    }
+
+    public Object globalFallback(){
+        return "Global fallback exception";
     }
 
 }

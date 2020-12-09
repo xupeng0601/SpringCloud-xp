@@ -27,6 +27,8 @@ logging:
 
 
 ribbon:
+  #建立连接后读取资源时间
   ReadTimeout: 10000
+  #表示建立连接时间
   ConnectTimeout: 10000
 
