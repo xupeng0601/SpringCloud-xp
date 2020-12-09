@@ -5,7 +5,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,8 +46,8 @@ public class Controller {
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),  //错误率达到多少跳闸
     })
     public String timeout() throws InterruptedException {
-        int a = 10/0;        log.info("线程等待");
-
+        int a = 10/0;
+        log.info("线程等待");
         Thread.sleep(2000);
         return "等待结束，成功返回,端口: " + port;
     }
