@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: server-consumer-nacos-discovery  #服务名称
+    name: SERVER-CONSUMER    #服务名称
   datasource:
     username: root
     password: 123456
@@ -14,7 +14,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 120.77.255.131:8848  #注册中心地址
+        server-addr: localhost:8848  #注册中心地址
 
 
 #hystrix的超时时间

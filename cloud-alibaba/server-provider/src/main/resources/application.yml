@@ -1,0 +1,21 @@
+
+server:
+  port: 9002               #应用访问端口
+
+spring:
+  application:
+    name: SERVER-PROVIDER   #应用名称
+  datasource:               #数据源配置       根据自己的数据源地址进行修改
+    username: root
+    password: 123456
+    url: jdbc:mysql://120.77.255.131:3306/nacos-practice?characterEncoding=utf-8&useSSl=false&serverTimeZone=GMT%2B8
+    driver-class-name: com.mysql.jdbc.Driver
+
+  cloud:                   #Nacos控制台地址   根据自己的地址和端口进行修改
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+
+
+

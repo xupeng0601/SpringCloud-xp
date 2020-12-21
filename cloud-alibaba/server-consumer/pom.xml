@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>server-consumer-nacos-discovery</artifactId>
-    <name>server-consumer-nacos-discovery</name>
+    <name>server-consumer</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
