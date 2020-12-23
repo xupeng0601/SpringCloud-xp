@@ -1,15 +1,17 @@
+server:
+  port: 9100
 spring:
   application:
-    name: nacos-config
-  profiles:
-    active: dev
+    name: nacos-config      #服务名称
+#  profiles:
+#    active:          #环境
   cloud:
     nacos:
       discovery:
-        server-addr: 120.77.255.131
+        server-addr: localhost:8848   #服务注册中心地址
       config:
-        server-addr: 120.77.255.131
-        prefix: ${spring.application.name}
-        file-extension: yml
-        # namespace: edbd013b-b178-44f7-8caa-e73071e49c4d
-        #group: DEV_GROUP
+        server-addr: localhost:8848    #服务配置中心地址
+        prefix: nacos-config  #配置中心对应配置文件前缀
+        file-extension: yml            #指定配置中心中对应的配置文件的格式
+        namespace: 7f7b095b-b388-49f2-ab3d-133bc73493b0  #DEV命名空间ID
+        group: MYSELF_GROUP   #DEV命名空间下的MYSELF_GROUP

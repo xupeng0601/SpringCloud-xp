@@ -48,13 +48,11 @@
             <scope>test</scope>
         </dependency>
 
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
-        <!--提供服务调用-->
+        <!--自定义jar包-->
         <dependency>
             <groupId>org.springcloud.alibaba</groupId>
             <artifactId>commons-api-openfeign</artifactId>

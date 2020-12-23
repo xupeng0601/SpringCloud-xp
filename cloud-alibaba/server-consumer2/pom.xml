@@ -9,8 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>server-consumer-nacos-discovery</artifactId>
-    <name>server-consumer-nacos-discovery</name>
+    <artifactId>server-consumer-nacos-discovery2</artifactId>
+    <name>server-consumer2</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
