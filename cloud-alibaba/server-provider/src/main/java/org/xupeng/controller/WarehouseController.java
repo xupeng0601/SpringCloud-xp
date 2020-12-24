@@ -9,7 +9,8 @@ import org.xupeng.mapper.IWarehouseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@RestController("/warehouse")
+@RestController
+@RequestMapping("/warehouse")
 @Slf4j
 public class WarehouseController {
 
@@ -28,8 +29,8 @@ public class WarehouseController {
         return ResultVO.success();
     }
 
-    @GetMapping("/helloNacos")
-    public Object helloNacos(){
-        return ResultVO.success();
+    @GetMapping("/hello")
+    public String helloNacos(){
+        return "success";
     }
 }

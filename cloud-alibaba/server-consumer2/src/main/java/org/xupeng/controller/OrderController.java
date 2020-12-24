@@ -3,7 +3,7 @@ package org.xupeng.controller;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.xupeng.VO.ResultVO;
-import org.xupeng.api.InventoryClient;
+import org.xupeng.api.WarehouseClient;
 import org.xupeng.entity.OrderEntity;
 import org.xupeng.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class OrderController {
     private String port;
 
     @Autowired
-    private InventoryClient inventoryClient;
+    private WarehouseClient inventoryClient;
 
 
     @PostMapping("/payment/{id}")

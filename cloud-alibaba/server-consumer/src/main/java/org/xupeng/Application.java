@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.xupeng.api.WarehouseClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient  //开启服务注册发现功能
@@ -26,6 +27,9 @@ public class Application {
 
     @Autowired
     private RestTemplate restTemplate;
+
+
+
 
     /**
      * 注入RestTemplate调用server-provider服务;
